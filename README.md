@@ -1,10 +1,3 @@
-# company-profile
+# final project
 
-iklan
-
-<div id="overlay"></div>
-  <div id="popup">
-    <button id="close">&times;</button>
-    <img src="assets/img/
-      " alt="Iklan">
-  </div>
+link website EventCertify: https://eventcertify.my.id/
