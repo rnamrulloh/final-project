@@ -1,0 +1,175 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Utama</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f9fafc;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            color: #333;
+        }
+
+        .header h1 {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .header p {
+            color: #6c757d;
+            font-size: 18px;
+        }
+
+        .logout-btn, .my-btn {
+            position: absolute;
+            top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: #fff;
+        }
+
+        .logout-btn {
+            right: 20px;
+            background-color: #dc3545;
+            border: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .my-btn {
+            right: 120px;
+            background-color: #007bff;
+            border: none;
+        }
+
+        .my-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .certificate-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            background-color: #fff;
+        }
+
+        .certificate-card:hover {
+            transform: scale(1.05);
+        }
+
+        .certificate-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Responsif untuk perangkat kecil */
+        @media (max-width: 576px) {
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logout-btn, .my-btn {
+                position: static;
+                margin: 5px auto;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .header {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Selamat Datang di Sistem Sertifikat</h1>
+            <p>Anda login sebagai: <strong><?php echo $_SESSION['username']; ?></strong></p>
+            <a href="logout.php" class="btn logout-btn">Logout</a>
+            <a href="mycertificates.php" class="my-btn">My Sertifikat</a>
+        </div>
+        
+        <div class="header">
+            <a href="logout.php" class="btn logout-btn">Logout</a>
+            <a href="mycertificates.php" class="my-btn">My Sertifikat</a>
+        </div>
+        
+        <h2>Pilih Template Sertifikat</h2>
+        
+        <!-- Kontainer galeri sertifikat -->
+        <div class="gallery-container">
+            <!-- Kartu sertifikat -->
+            <div class="certificate-card">
+                <a href="preview/hasil/templet-1/1.php">
+                    <img src="images/1.jpg" alt="Sertifikat 1">
+                </a>
+            </div>
+
+            <div class="certificate-card">
+                <a href="preview/hasil/templet-2/2.php">
+                    <img src="images/2.jpg" alt="Sertifikat 2">
+                </a>
+            </div>
+
+            <div class="certificate-card">
+                <a href="preview/hasil/templet-3/3.php">
+                    <img src="https://via.placeholder.com/300x200.png?text=Sertifikat+3" alt="Sertifikat 3">
+                </a>
+            </div>
+
+            <div class="certificate-card">
+                <a href="preview.php">
+                    <img src="https://via.placeholder.com/300x200.png?text=Sertifikat+4" alt="Sertifikat 4">
+                </a>
+            </div>
+            <!-- Tambahkan elemen hingga 60 total -->
+        </div>
+    </div>
+
+</body>
+</html>
